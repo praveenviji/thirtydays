@@ -1,0 +1,45 @@
+//find fibonacci number in a given array . march 16 ,2025
+
+// fibanocci number in array 
+
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	
+	
+	System.out.println("Enter string array");
+	Scanner sc= new Scanner(System.in);
+	
+	String input[]=sc.nextLine().split(" ");
+	
+	for(String a : input){
+	    if(isFibanocci(Integer.parseInt(a)))
+	    {
+	    System.out.print(a+" ");
+	    }
+	}
+	
+	}
+	
+	public static boolean isFibanocci(int num){
+	    
+	    int a=0,b=1;
+	    
+	    while(a<=num){
+	        if(a==num)
+	        {
+	          return true;
+	        }
+	        
+	        int next = a+b;
+	        a=b;
+	        b=next;
+	    }
+	    
+	    
+	    return false;
+	}
+
+}
