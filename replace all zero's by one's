@@ -1,0 +1,31 @@
+// replace 0's by 1's input 1500 output 1511;
+
+public class Main
+{
+	public static void main(String[] args) {
+	
+	int n=1500;
+	
+	int rem=0,i=0,j=1;
+	
+	while(n>0){
+	    
+	    rem=n%10;
+	    
+	    if(rem==0){
+	        
+	        rem=1;
+	    }
+	    
+	    i= j*rem+i;
+	    
+	    j=j*10;
+	    n=n/10;
+	    
+	}
+	
+	System.out.println(i);
+	
+	
+	}
+}
