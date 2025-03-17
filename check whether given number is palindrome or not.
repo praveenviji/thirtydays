@@ -1,0 +1,46 @@
+// check the given number is a palindrome or not 
+// palindrome between a range 1 to 100 .
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    Scanner sc=new Scanner(System.in);
+	    
+	    System.out.print("************** enter a number ******************");
+	    
+	    int n=sc.nextInt();
+	    
+	    if(isPalindrome(n))
+	      System.out.print(n+" is a palindrome");
+	    else
+	      System.out.print(n+" is not a palindrome");
+	      
+	      System.out.print("\n enter range value");
+	
+	    int m= sc.nextInt();
+	    
+	    System.out.print("\n palindrome number between 1 to "+m +" is " );
+	    
+	    for(int i=1;i<=m;i++){
+	        if(isPalindrome(i)){
+	            System.out.print(i+" ");
+	        }
+	    }
+	
+	}
+	
+	public static boolean isPalindrome(int n){
+	    
+	    int temp=n,rev=0;
+	    
+	    while(n>0){
+	        
+	        rev=rev*10+n%10;
+	        n=n/10;
+	    }
+	    
+	    return (temp==rev);
+	}
+}
