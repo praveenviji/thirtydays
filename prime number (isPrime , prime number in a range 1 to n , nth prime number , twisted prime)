@@ -1,0 +1,94 @@
+ // prime number (isPrime , prime number in a range 1 to n , nth prime number , twisted prime)
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    // prime number between 1 to 1000
+	    
+	    for(int i=1;i<=1000;i++){
+	        
+	        if(isPrime(i)){
+	            System.out.print(i+" ");
+	            
+	        }
+	    }
+	    
+	    // check whether the given number is prime or not.
+	    
+	    int n=35;
+	    if(isPrime(n))
+	     System.out.print("\n"+ n +" is a prime number ");
+	     else
+	      System.out.print("\n"+ n + " is not a prime number");
+	      
+	      // nth prime for example input n=10 output 29
+	      
+	      int nth=1;
+	      System.out.print("\n"+nthPrime(nth));
+	      
+	      // twisted prime number input 97 output is twisted prime number . 97 & 79 both are prime number . 
+	      //input 43 output is not twisted prime number . 43 is prime number but 34 is not prime number
+	      
+	      int twisted=3;
+	      if(isPrime(twisted) && isPrime(reverseNumber(twisted)))
+	         System.out.print("\n"+twisted+" is a twisted prime number");
+	      else
+	         System.out.print("\n"+twisted+" is not twisted prime number");
+	   
+	
+	}
+	
+	
+	public static boolean isPrime(int n){
+	    
+	    if(n==1){
+	        return false;
+	    }
+	    
+	    if(n==2 || n==3 ){
+	        return true;
+	    }
+	    
+	    if(n%2==0 || n%3==0 ){
+	        return false;
+	    }
+	    
+	    for(int i=5 ; i*i<=n;i=i+6){
+	        
+	        if(n%i==0 || n%(i+2)==0){
+	            return false;
+	        }
+	    }
+	    
+	    return true;
+	    
+	}
+	
+	public static int nthPrime(int n){
+	    
+	    int num=1;
+	    
+	    while(n>0){
+	        num++;
+	        if(isPrime(num)){
+	            n--;
+	        }
+	    }
+	    
+	    return num;
+	}
+	
+	public static int reverseNumber(int n){
+	    
+	    int rev=0;
+	    
+	    while(n>0){
+	        rev=rev*10+n%10;
+	        n=n/10;
+	    }
+	    
+	    return rev;
+	}
+	
+}
