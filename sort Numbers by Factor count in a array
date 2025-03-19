@@ -1,0 +1,76 @@
+// sort Numbers by Factor count.
+// sort an array in descending order based on the number  of factors of each number
+// input 8,2,3,12,16
+// output 12,16,8,2,3.
+// 12 -> 1,2,3,4,6,12(6) , 16 -> 1,2,4,8,16(5) , 8 -> 1,2,4,8(4) , 2 -> 1,2(2) , 3 -> 1,3(2).
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	
+	int ar[]={ 2,16,12,3,8};
+	
+	bubbleSort(ar);
+// 	selectionSort(ar);
+
+
+for(int i=0;i<ar.length;i++){
+    System.out.print(ar[i]+" ");
+}
+	
+	}
+	
+	public static void bubbleSort(int ar[]){
+	    
+	    for(int i=0;i<ar.length-1;i++){
+	        for(int j=0;j<ar.length-1-i;j++){
+	            
+	            if(factorCount(ar[j])<factorCount(ar[j+1])){
+	                int temp = ar[j];
+	                ar[j]=ar[j+1];
+	                ar[j+1]=temp;
+	            }
+	        }
+	    }
+	}
+	
+	// selection sort (ascending)
+	
+	public static void selectionSort(int ar[]){
+	    
+	    int index=0;
+	    
+	    for(int i=0;i<ar.length-1;i++){
+	        
+	        index=i;
+	        
+	        for(int j=i+1;j<ar.length;j++){
+	            if(ar[index]>ar[j]){
+	                index=j;
+	            }
+	        }
+	        
+	        int temp = ar[index];
+	        ar[index]=ar[i];
+	        ar[i]=temp;
+	    }
+	}
+	
+	public static int factorCount(int n){
+	    
+	    int count=0;
+	    
+	    for(int i=1;i<=n;i++){
+	        
+	        if(n%i==0){
+	            count++;
+	        }
+	    }
+	    
+	    return count;
+	    
+	}
+	
+	
+}
