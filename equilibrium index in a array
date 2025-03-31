@@ -1,0 +1,55 @@
+/******************************************************************************
+equilibrium index in a array
+
+input : [1,2,0,3]
+output : 2            
+
+explantaion : 1+2=3 (left sum) , (right sum) 3 , then equilibrium index is 2 
+
+input :[1,1,1,1] , output : -1 no equilibrium index;
+*******************************************************************************/
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		int ar[]={1,2,0,3};
+		
+		System.out.println(equilibriumIndex(ar));
+		
+	}
+	
+	public static int equilibriumIndex(int ar[])
+	{
+	    
+	    
+	    int prefix[]=new int [ar.length];
+	    int suffix[]=new int[ar.length];
+	    
+	    prefix[0]=ar[0]; // [1,3,3,6]
+	    suffix[ar.length-1]=ar[ar.length-1];// [6,5,3,3]
+	    
+	    for(int i=1;i<ar.length;i++)
+	    {
+	        prefix[i]=prefix[i-1]+ar[i];
+	    }
+	    
+	    for(int i=ar.length-2;i>=0;i--)
+	    {
+	        suffix[i]=suffix[i+1]+ar[i];
+	    }
+	    
+	    for(int i=0;i<ar.length;i++)
+	    {
+	        if(suffix[i]==prefix[i])
+	        {
+	            return i;
+	        }
+	    }
+	    
+	    
+	    return -1;
+	}
+}
