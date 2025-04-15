@@ -1,0 +1,100 @@
+/******************************************************************************
+i) binary Addition .
+
+ii) binary to decimal .
+
+iii) decimal to binary .
+*******************************************************************************/
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+		// Binary Addition 
+		String str1="1011" ,str2="1010";
+		System.out.print("Binary Addition  : "+str1 + " + "+str2 +" : ");
+		System.out.println(binaryAddition(str1,str2));
+		
+		// binary to decimal.
+		int num = 10101;
+		// System.out.println(binaryToDecimal(binaryAddition(str1,str2)));
+		System.out.print("Binary To Decimal : "+num +" is ");
+		System.out.println(binaryToDecimal(num));
+		
+		// decimal to binary
+		int n=19;
+		System.out.print("Decimal to Binary : "+n+" is ");
+		System.out.println(decimalToBinary(n));
+	}
+	
+	// binary addition
+	public static String binaryAddition(String str1 , String str2)
+	{
+	    
+	    int i=str1.length()-1 ,j=str2.length()-1;
+	    int carry=0;
+	    
+	    StringBuilder result = new StringBuilder();
+	    
+	    while(i>=0 || j>=0 || carry==1)
+	    {
+	        int sum = carry;
+	        
+	        if(i>=0)
+	        {
+	            sum=sum+str1.charAt(i)-'0';
+	            i--;
+	        }
+	        
+	        if(j>=0)
+	        {
+	            sum=sum+str2.charAt(j)-'0' ;
+	            j--;
+	        }
+	        
+	        result.append(sum%2);
+	        carry = sum/2;
+	    }
+	    
+	    
+	    return result.reverse().toString();
+	}
+	
+	// binary to decimal.
+	public static int binaryToDecimal(int num)
+	{
+	   // int num = Integer.parseInt(str);
+	    int i=0;
+	    int sum=0;
+	    int rem=0;
+	    while(num>0)
+	    {
+	       rem = num%10;
+	        sum=sum+rem*(int)Math.pow(2,i);
+	        num=num/10;
+	        i++;
+	    }
+	    
+	    
+	    return sum;
+	}
+	
+	// decimal to binary
+	public static int decimalToBinary(int num)
+	{
+	    int rem=0;
+	    StringBuilder ans = new StringBuilder();
+	    while(num>0)
+	    {
+	        rem=num%2;
+	        ans.append(rem);
+	        num=num/2;
+	    }
+	    
+	     String str = ans.reverse().toString();
+	    
+	    int result = Integer.parseInt(str);
+	    
+	    return result;
+	}
+}
