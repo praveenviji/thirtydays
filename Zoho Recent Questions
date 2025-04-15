@@ -1,0 +1,208 @@
+/******************************************************************************
+
+                Zoho recent questions
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		
+		int ar[]={16,17,5,1,2};
+		
+		leaderElements(ar);
+		
+		int mat[][]={ {1,2,3,},{4,5,6},{7,8,9} };
+		snakePattern(mat);
+		
+		String s1="schoollifeisusefull" , s2="schoollongofuselike";
+		
+		unmatchedSubstrings(s1,s2);
+		
+		int num[]={8,7,1,9};
+		
+		largetNumberFormation(num);
+		
+		String st1 ="10011",st2="11000";
+		
+		binaryAddition(st1,st2);
+		
+		int n=5;
+		numberPattern(n);
+		
+		int ar1[]={1,1,0,0,1,0,1,0,1,1,1,1};
+		maximumConsecutiveSubarray(ar1);
+	}
+	
+	public static void leaderElements(int ar[])
+	{
+	    
+	    ArrayList<Integer> ans = new ArrayList<>();
+	    
+	    int max=0;
+	    
+	    for(int i=ar.length-1;i>=0;i--)
+	    {
+	        if(max<ar[i])
+	        {
+	            max=ar[i];
+	            ans.add(ar[i]);
+	        }
+	    }
+	    
+	    Collections.reverse(ans);
+	    
+	    System.out.println(ans);
+	}
+	
+	public static void snakePattern(int ar[][])
+	{
+	    for(int i=0;i<ar.length ; i++)
+	    {
+	        if(i%2==0)
+	        {
+	            for(int j=0;j<ar[0].length;j++)
+	            {
+	                System.out.print(ar[i][j]+" ");
+	            }
+	        }
+	        
+	        else
+	        {
+	            for(int j=ar[0].length-1;j>=0;j--)
+	            {
+	                System.out.print(ar[i][j]+" ");
+	            }
+	        }
+	        
+	        System.out.println();
+	    }
+	}
+	
+	public static void unmatchedSubstrings(String s1 , String s2)
+	{
+	    if(s1.length()!=s2.length())
+	    {
+	        return;
+	    }
+	    
+	    StringBuilder sb1 = new StringBuilder();
+	    StringBuilder sb2 = new StringBuilder();
+	    
+	    boolean flag=false;
+	    
+	    for(int i=0;i<s1.length();i++)
+	    {
+	        if(s1.charAt(i) !=s2.charAt(i))
+	        {
+	            sb1.append(s1.charAt(i));
+	            sb2.append(s2.charAt(i)); 
+	            
+	            flag=true;
+	        }
+	        else if(flag)
+	        {
+	            System.out.println(sb1+","+sb2);
+	            flag=false;
+	            sb1.setLength(0);
+	            sb2.setLength(0);
+	        }
+	    }
+	    
+	    System.out.println(sb1+","+sb2);
+	}
+	
+	public static void largetNumberFormation(int ar[])
+	{
+	    int count[] = new int[10];
+	    
+	    for(int i=0;i<ar.length;i++)
+	    {
+	        count[ar[i]]++;
+	    }
+	    
+	    for(int i=count.length-1;i>=0;i--)
+	    {
+	        while(count[i]>0)
+	        {
+	            System.out.print(i);
+	            count[i]--;
+	        }
+	    }
+	    
+	    System.out.println();
+	}
+	
+	public static void binaryAddition(String s1 , String s2)
+	{
+	    int sum=0,carry=0;
+	    int i=s1.length()-1,j=s2.length()-1;
+	    
+	    StringBuilder result = new StringBuilder();
+	    
+	    while(i>=0 || j>=0 || carry==1)
+	    {
+	        sum=carry;
+	        
+	        if(i>=0)
+	        {
+	            sum+=s1.charAt(i)-'0';
+	            i--;
+	        }
+	        
+	        if(j>=0)
+	        {
+	            sum+=s2.charAt(j)-'0';
+	            j--;
+	        }
+	        result.append(sum%2);
+	        carry=sum/2;
+	       
+	    }
+	    result.reverse();
+	    System.out.println(result);
+	}
+	
+	public static void numberPattern(int n)
+	{
+	    int row=4;
+	    
+	    for(int i=1;i<=n;i++)
+	    {
+	        System.out.print(i+" ");
+	        int value=i;
+	        int col=row;
+	        for(int j=1;j<i;j++)
+	        {
+	            value +=col;
+	            System.out.print(value+" ");
+	             col--;
+	        }
+	        
+	        System.out.println();
+	    }
+	}
+	
+	public static void maximumConsecutiveSubarray(int ar[])
+	{
+	    int maxLength=1;
+	    int count =1;
+	    for(int i=1;i<ar.length;i++)
+	    {
+	        if(ar[i]==ar[i-1])
+	        {
+	            count++;
+	        }
+	        else
+	        {
+	            count =1;
+	        }
+	        
+	        if(maxLength<count)
+	        {
+	            maxLength=count;
+	        }
+	    }
+	    
+	    System.out.println(maxLength);
+	}
+}
